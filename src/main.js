@@ -6,7 +6,7 @@ import config from './config'
 // import VueAxios from 'vue-axios' 
 // Vue.use(VueAxios, axios)
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 
 const apiUrl = process.env.NODE_ENV === 'production' ? config.apiUrl.prod : config.apiUrl.dev
 console.log('using api url', apiUrl)

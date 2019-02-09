@@ -11,14 +11,15 @@ const weekSchema = new Schema({
     required: true
   },
   dateUntil: Date,
-  upVotes: {
-    type: Number,
-    default: 0
-  },
-  downVotes: {
-    type: Number,
-    default: 0
-  }
+  votes: [
+    {
+      date: Date,
+      vote: {
+        type: String, 
+        enum: ['up', 'down']
+      }
+    }
+  ]
 }, {
   timestamps: true
 })

@@ -6,11 +6,13 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "publish": "npm run build && aws s3 cp dist s3://kitchenweekers/ --recursive"
+    "publish": "npm run build && aws s3 cp dist s3://kitchenweekers/ --recursive",
+    "backend": "sls offline start --skipCacheInvalidation"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.10",
     "serverless-http": "^1.9.0",

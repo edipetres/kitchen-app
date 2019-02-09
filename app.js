@@ -30,6 +30,6 @@ app.get('/', async (req, res) => {
 
 app.get('/weeks', controller.getCurrentWeek)
 app.post('/weeks', controller.createNewWeek)
-app.post('/weeks/:id/vote/:type', controller.vote)
+app.post('/weeks/:id/vote/', controller.vote)
 
 module.exports.server = sls(app)
