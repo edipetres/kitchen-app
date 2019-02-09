@@ -44,7 +44,7 @@ exports.vote = async (req, res) => {
 
 exports.getCurrentWeek = async (req, res) => {
   const now = new Date()
-  let currentWeek = await Week.findOne({
+  const currentWeek = await Week.findOne({
     dateFrom: {
       $lte: now
     },
@@ -53,7 +53,6 @@ exports.getCurrentWeek = async (req, res) => {
     }
   })
   return res.send({
-    currentWeek,
-    votesToday : "getVotesToday(currentWeek.votes)"
+    currentWeek
   })
 }
