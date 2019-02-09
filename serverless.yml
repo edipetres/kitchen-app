@@ -5,6 +5,9 @@ provider:
   runtime: nodejs8.10
   stage: dev
   region: eu-central-1
+  environment:
+    MONGO_URL: mongodb://dev:cEeyrHK3TewM@ds127535.mlab.com:27535/kitchenweekers
+    HOST: aws
 
 functions:
   app:

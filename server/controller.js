@@ -34,7 +34,7 @@ exports.vote = async (req, res) => {
   } catch (error) {
     return res.status(400).send('Something went wrong. See error log below\n\n', error)
   }
-  return res.send(updatedWeek)
+  return res.send({updatedWeek})
 }
 
 exports.getCurrentWeek = async (req, res) => {

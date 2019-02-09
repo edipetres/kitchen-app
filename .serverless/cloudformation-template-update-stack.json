@@ -8,7 +8,7 @@
     "AppLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/serverless-nodejs-app-dev-app"
+        "LogGroupName": "/aws/lambda/kitchenweekers-backend-dev-app"
       }
     },
     "IamRoleLambdaExecution": {
@@ -37,7 +37,7 @@
                 "-",
                 [
                   "dev",
-                  "serverless-nodejs-app",
+                  "kitchenweekers-backend",
                   "lambda"
                 ]
               ]
@@ -52,7 +52,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-nodejs-app-dev-app:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/kitchenweekers-backend-dev-app:*"
                     }
                   ]
                 },
@@ -63,7 +63,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-nodejs-app-dev-app:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/kitchenweekers-backend-dev-app:*:*"
                     }
                   ]
                 }
@@ -76,7 +76,7 @@
           "Fn::Join": [
             "-",
             [
-              "serverless-nodejs-app",
+              "kitchenweekers-backend",
               "dev",
               "eu-central-1",
               "lambdaRole"
@@ -92,9 +92,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-nodejs-app/dev/1549648019512-2019-02-08T17:46:59.512Z/serverless-nodejs-app.zip"
+          "S3Key": "serverless/kitchenweekers-backend/dev/1549663904867-2019-02-08T22:11:44.867Z/kitchenweekers-backend.zip"
         },
-        "FunctionName": "serverless-nodejs-app-dev-app",
+        "FunctionName": "kitchenweekers-backend-dev-app",
         "Handler": "app.server",
         "MemorySize": 1024,
         "Role": {
@@ -104,27 +104,33 @@
           ]
         },
         "Runtime": "nodejs8.10",
-        "Timeout": 6
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "MONGO_URL": "mongodb://dev:cEeyrHK3TewM@ds127535.mlab.com:27535/kitchenweekers",
+            "HOST": "aws"
+          }
+        }
       },
       "DependsOn": [
         "AppLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "AppLambdaVersiongMIhfeygG1vvh2HhrryL0KwVIKCffjQyNoWTdJ4diHA": {
+    "AppLambdaVersionlHjFaiBHXZkzFOzltXXnyZlVNHgY6QDo2lWKqk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "IhCj5/vGqlCO5BNMHl14xwtUrzbZ3iCabORDxaPKLfQ="
+        "CodeSha256": "/2h7ilxN2BpXs4As+ZDPrbcQbjr/mWulqQKPd+VYbMo="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-serverless-nodejs-app",
+        "Name": "dev-kitchenweekers-backend",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -333,7 +339,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1549648019543": {
+    "ApiGatewayDeployment1549663904917": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -405,7 +411,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersiongMIhfeygG1vvh2HhrryL0KwVIKCffjQyNoWTdJ4diHA"
+        "Ref": "AppLambdaVersionlHjFaiBHXZkzFOzltXXnyZlVNHgY6QDo2lWKqk"
       }
     },
     "ServiceEndpoint": {
