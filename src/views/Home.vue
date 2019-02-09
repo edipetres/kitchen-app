@@ -21,18 +21,18 @@
 
         <div class="vote">
           <div class="buttons">
-            <span id="like">
+            <span id="like" class="button-wrapper bw-left">
               <span>
                 {{currentWeek.upVotes}}
               </span>
               <svg style="width:35px;height:35px" viewBox="0 0 24 24" @click="vote('up')" class="icon" :class="{faded: !votes.canVote}">
-                <path fill="rgb(131,209,8)" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
+                <path fill="rgb(131,209,8)" id="up-svg" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
               </svg>
             </span>
 
-            <span id="dislike">
+            <span id="dislike" class="button-wrapper bw-right">
               <svg style="width:35px;height:35px;" viewBox="0 0 24 24" @click="vote('down')" class="icon" :class="{faded: !votes.canVote}">
-                <path fill="rgb(192,33,13)" d="M19,15H23V3H19M15,3H6C5.17,3 4.46,3.5 4.16,4.22L1.14,11.27C1.05,11.5 1,11.74 1,12V14A2,2 0 0,0 3,16H9.31L8.36,20.57C8.34,20.67 8.33,20.77 8.33,20.88C8.33,21.3 8.5,21.67 8.77,21.94L9.83,23L16.41,16.41C16.78,16.05 17,15.55 17,15V5C17,3.89 16.1,3 15,3Z" />
+                <path fill="rgb(192,33,13)" id="down-svg" d="M19,15H23V3H19M15,3H6C5.17,3 4.46,3.5 4.16,4.22L1.14,11.27C1.05,11.5 1,11.74 1,12V14A2,2 0 0,0 3,16H9.31L8.36,20.57C8.34,20.67 8.33,20.77 8.33,20.88C8.33,21.3 8.5,21.67 8.77,21.94L9.83,23L16.41,16.41C16.78,16.05 17,15.55 17,15V5C17,3.89 16.1,3 15,3Z" />
               </svg>
               {{currentWeek.downVotes}}
             </span>
@@ -185,12 +185,29 @@ export default {
         text-align: center;
         margin-top: 25px;
         display: block;
-      }
 
-      #dislike {
-        margin-left: 10px;
-      }
+        .button-wrapper {
+          border: 1px solid #5e7985;
+          border-radius: 5px 0px 0px 5px;
+          padding: 7px 7px 7px 12px;
+          background-color: #fbfbfb;
+          box-shadow: 4px 4px black;
 
+        }
+        .bw-left {
+          border-radius: 5px 0px 0px 5px;
+        }
+        
+        #down-svg {
+          fill: #ec407a;
+        }
+        #up-svg {
+          fill: #81c784;
+        }
+        .bw-right {
+          border-radius: 0px 5px 5px 0px;
+        }
+      }
       .faded {
         opacity: 0.6;
       }
